@@ -1,0 +1,49 @@
+{
+    "manifest_version": 3,
+    "name": "NSFW Image Blur",
+    "version": "1.0",
+  
+    "description": "A browser extension to detect and blur NSFW images.",
+    "icons": {
+        "16": "./public/icon/icons16.png",
+        "48": "./public/icon/icons32.png",
+        "128": "./public/icon/icons96.png"
+    },
+  
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "webRequest",
+
+      "http://*/*",
+      "https://*/*"
+    ],
+  
+   
+    "action": {
+      "default_icon": {
+        "16": "./public/icon/icons16.png",
+        "48": "./public/icon/icons32.png",
+        "128": "./public/icon/icons96.png"
+      },
+      "default_popup": "popup.html",
+      "action_type": "popup"
+    },
+  
+    "background": {
+      "service_worker": "background.js"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": [
+          "http://*/*",
+          "https://*/*"
+        ],
+        "js": [
+          "script.js"
+        ],
+        "all_frames": true
+      }
+    ]
+  }
